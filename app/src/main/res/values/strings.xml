@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">L08Songs</string>
+    <string name="s1">1</string>
+    <string name="s2">2</string>
+    <string name="s3">3</string>
+    <string name="s4">4</string>
+    <string name="s5">5</string>
+    <string name="title">Song Title</string>
+    <string name="name">Singers</string>
+    <string name="year">Year</string>
+    <string name="stars">Stars</string>
+    <string name="insert">Insert</string>
+    <string name="list">Show List</string>
+</resources>
