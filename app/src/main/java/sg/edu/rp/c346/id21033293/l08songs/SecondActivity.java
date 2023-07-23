@@ -29,12 +29,38 @@ public class SecondActivity extends AppCompatActivity {
 
         DBHelper db = new DBHelper(SecondActivity.this);
         al.clear();
-        al.addAll(db.getAllSongs);
+        al.addAll(db.getAllSongs());
         db.close();
 
-        aa = new ArrayAdapter<>(SecondActivity.this, android.R.layout.simple_list_item_1, al);
+        aa = new ArrayAdapter(SecondActivity.this, android.R.layout.simple_list_item_1, al);
         lv.setAdapter(aa);
 
-        
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent gothirdActivity = new Intent(SecondActivity.this, ThirdActivity.class);
+
+                Song data = al.get(position);
+
+                gothirdActivity.putExtra("data" , data);
+                startActivity(gothirdActivity);
+            }
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 9){
+            lv = (ListView)findViewById(R.id.lv);
+            al = new ArrayList<Song>();
+            DBHelper dbh = new DBHelper(SecondActivity.this);
+            al.clear();
+            al.addAll(dbh.getAllSongs());
+            dbh.close();
+            aa = new ArrayAdapter(this, android.R.layout.simple_list_item_1,al);
+
+            lv.setAdapter(aa);
+        }
     }
 }

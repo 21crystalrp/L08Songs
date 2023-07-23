@@ -2,28 +2,51 @@ package sg.edu.rp.c346.id21033293.l08songs;
 
 import androidx.annotation.NonNull;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
+
     private int id;
     private String title;
-    private String singers;
+    private String singer;
     private int year;
     private int stars;
 
-    public Song(int id, String title, String singers, int year, int stars) {
+    public Song(int id, String title, String singer, int year, int stars) {
         this.id = id;
         this.title = title;
-        this.singers = singers;
-        this.year = year;
+        this.singer = singer;
         this.stars = stars;
+        this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + ", " + title + ", "+ singer + ", "+ year + ", "+ stars;
     }
 
     public int getId() { return id; }
-    public String getTitle() { return title; }
-    public String getSingers() { return singers; }
-    public int getYear() { return year; }
-    public int getStars() { return stars; }
 
-    @NonNull
-    @Override
-    public String toString() { return id + "\n" + title + "\n" + singers + "\n" + year + "\n" + stars; }
+    public String getTitle() {
+        return title;
+    }
+
+    public String getSinger() {
+        return singer;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+    public void setTitle(String title) { this.title = title; }
+
+    public void setSinger(String singer) { this.singer = singer; }
+
+    public void setYear(int year) { this.year = year; }
+
+    public void setStars(int stars) { this.stars = stars; }
 }
